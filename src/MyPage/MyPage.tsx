@@ -5,10 +5,10 @@ import {
   Text,
   ScrollView,
   TouchableHighlight,
-  Switch,
 } from 'react-native';
 import GlobalStyles from '../Styles/GlobalStyles';
 import ViewUtils from '../Util/ViewUtils';
+import {MyPage_Menu} from './enum/MoreMenu';
 
 interface IProps {}
 
@@ -23,43 +23,120 @@ class MyPage extends PureComponent<IProps> {
             </View>
           </TouchableHighlight>
           <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyGrade,
+            require('../Images/1.png'),
+            MyPage_Menu.MyGrade,
+            '理想会员',
+          )}
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyMessage,
+            require('../Images/1.png'),
+            MyPage_Menu.MyMessage,
+            null,
+          )}
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyOrder,
+            require('../Images/1.png'),
+            MyPage_Menu.MyOrder,
+            null,
+          )}
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyChargingPile,
+            require('../Images/1.png'),
+            MyPage_Menu.MyChargingPile,
+            null,
+          )}
 
-          <Text style={styles.groupTitle}>第一组</Text>
-          <View style={GlobalStyles.line} />
-          {this.getItem(1, null, '设置', '请选择')}
-          <View style={GlobalStyles.line} />
-          <View style={GlobalStyles.line} />
-          {this.getItem(2, require('../Images/1.png'), '设置', '请选择')}
-          <View style={GlobalStyles.line} />
-          {this.getItem(3, require('../Images/1.png'), '设置', '250M')}
-          <View style={GlobalStyles.line} />
+          <Text style={styles.groupTitle} />
 
-          <Text style={styles.groupTitle}>第二组</Text>
+          {this.getItem(
+            MyPage_Menu.InviteBuyCar,
+            require('../Images/1.png'),
+            MyPage_Menu.InviteBuyCar,
+            '邀请购车-邀请二维码',
+          )}
           <View style={GlobalStyles.line} />
-          {this.getItem(4, require('../Images/1.png'), '设置', null)}
+          {this.getItem(
+            MyPage_Menu.InviteBuyCar,
+            require('../Images/1.png'),
+            MyPage_Menu.InviteBuyCar,
+            null,
+          )}
           <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyIntegral,
+            require('../Images/1.png'),
+            MyPage_Menu.MyIntegral,
+            null,
+          )}
           <View style={GlobalStyles.line} />
-          {this.getItem(5, require('../Images/1.png'), '设置', '250M')}
+          {this.getItem(
+            MyPage_Menu.MyCoupon,
+            require('../Images/1.png'),
+            MyPage_Menu.MyCoupon,
+            null,
+          )}
           <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyActivity,
+            require('../Images/1.png'),
+            MyPage_Menu.MyActivity,
+            null,
+          )}
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.MyFavorite,
+            require('../Images/1.png'),
+            MyPage_Menu.MyFavorite,
+            null,
+          )}
+
+          <Text style={styles.groupTitle} />
+
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.Setting,
+            require('../Images/1.png'),
+            MyPage_Menu.Setting,
+            null,
+          )}
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.HelpCenter,
+            require('../Images/1.png'),
+            MyPage_Menu.HelpCenter,
+            null,
+          )}
+          <View style={GlobalStyles.line} />
+          {this.getItem(
+            MyPage_Menu.FeedBack,
+            require('../Images/1.png'),
+            MyPage_Menu.FeedBack,
+            null,
+          )}
         </ScrollView>
-        <Text style={styles.groupTitle}>我的页面</Text>
       </View>
     );
   }
 
-  onClick(tag) {
+  onClick(tag: MyPage_Menu) {
     switch (tag) {
-      case 1:
+      case MyPage_Menu.MyGrade:
         console.log('click' + tag);
         break;
-
+      case MyPage_Menu.Setting:
+        break;
       default:
         console.log('click 其他' + tag);
         break;
     }
   }
 
-  getItem(tag, icon, title, subTitle) {
+  getItem(tag: MyPage_Menu, icon, title: string, subTitle: string) {
     return ViewUtils.getSettingItem(
       () => this.onClick(tag),
       icon,
